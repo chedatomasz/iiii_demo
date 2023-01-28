@@ -2,86 +2,181 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Boardgame Companion</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
-.w3-bar-block .w3-bar-item {padding:20px}
-</style>
+  <title>Boardgame Companion</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+  <style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Karma", sans-serif
+    }
+
+    .w3-bar-block .w3-bar-item {
+      padding: 20px
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Sidebar (hidden by default) -->
-<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()"
-  class="w3-bar-item w3-button">Close Menu</a>
-  <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Games</a>
-  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
-</nav>
+  <!-- Sidebar (hidden by default) -->
+  <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left"
+    style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button">Close Menu</a>
+    <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Games</a>
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
+  </nav>
 
-<!-- Top menu -->
-<div class="w3-top">
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-    <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">&#9776;</div>
-    <div class="w3-center w3-padding-16">Boardgame companion</div>
-  </div>
-</div>
-  
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+  <!-- Top menu -->
+  <div class="w3-top">
+    <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+      <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">&#9776;</div>
+      <div class="w3-right w3-padding-16" onclick="logout()" id="logout">Logout</div>
+      <div class="w3-center w3-padding-16">Boardgame companion</div>
 
-  <!-- First Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center" id="games">
-    <div class="w3-quarter">
-        <a href="some_game.html"><img src="images/boardgame_1.jpg" alt="Image by Tumisu from Pixabay " style="width:100%"></a>
-        <h3>Play game one</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed, varius arcu.</p>
-    </div>
-    <div class="w3-quarter">
-        <a href="some_game.html"><img src="images/boardgame_2.jpg" alt="Image by Edwin Francisco from Pixabay " style="width:100%"></a>
-        <h3>Play game two</h3>
-        <p>OLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed, varius arcu.</p>
-    </div>
-    <div class="w3-quarter">
-        <a href="some_game.html"><img src="images/boardgame_3.jpg" alt="Image by Mark from Pixabay " style="width:100%"></a>
-        <h3>Play game three</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed, varius arcu.</p>
-    </div>
-    <div class="w3-quarter">
-        <a href="some_game.html"><img src="images/boardgame_4.jpg" alt="Image by Edwin Francisco from Pixabay " style="width:100%"></a>
-        <h3>Play game four</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed, varius arcu.</p>
     </div>
   </div>
-  
-  <hr id="about">
-  
-  <!-- Footer -->
-  <footer class="w3-row-padding w3-padding-32">
-    <div class="w3-third">
-      <h3>About us</h3>
-      <p>Company description goes here.</p>
+
+
+  <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
+    <div id="notloggedin_content" style="display:none">
+      <section class="form animated">
+        <h2>Login To Your Account</h2>
+        <form class="loginbox" autocomplete="off">
+          <input placeholder="Username" type="text" id="username"></input>
+          <input placeholder="Password" type="password" id="password"></input>
+          <button type="button" onclick="setloggedin()">Login</button>
+        </form>
+      </section>
+      <hr>
+      <h1> Buy our game guides!</h1>
+      <div class="w3-row-padding w3-padding-16 w3-center" id="games">
+        <div class="w3-quarter">
+          <img src="images/boardgame_1.jpg" alt="Image by Tumisu from Pixabay " style="width:100%">
+          <h3>Buy game one</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed,
+            varius arcu.</p>
+        </div>
+        <div class="w3-quarter">
+          <img src="images/boardgame_2.jpg" alt="Image by Edwin Francisco from Pixabay " style="width:100%">
+          <h3>Buy game two</h3>
+          <p>OLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed,
+            varius arcu.</p>
+        </div>
+        <div class="w3-quarter">
+          <img src="images/boardgame_3.jpg" alt="Image by Mark from Pixabay " style="width:100%">
+          <h3>Buy game three</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed,
+            varius arcu.</p>
+        </div>
+        <div class="w3-quarter">
+          <img src="images/boardgame_4.jpg" alt="Image by Edwin Francisco from Pixabay " style="width:100%">
+          <h3>Buy game four</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed,
+            varius arcu.</p>
+        </div>
+      </div>
     </div>
-</footer>
 
-<!-- End page content -->
-</div>
+    <div id="loggedin_content" style="display:none">
+      <div class="w3-row-padding w3-padding-16 w3-center" id="games">
+        <div class="w3-quarter">
+          <a href="some_game.html"><img src="images/boardgame_1.jpg" alt="Image by Tumisu from Pixabay "
+              style="width:100%"></a>
+          <h3>Play game one</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed,
+            varius arcu.</p>
+        </div>
+        <div class="w3-quarter">
+          <a href="some_game.html"><img src="images/boardgame_2.jpg" alt="Image by Edwin Francisco from Pixabay "
+              style="width:100%"></a>
+          <h3>Play game two</h3>
+          <p>OLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed,
+            varius arcu.</p>
+        </div>
+        <div class="w3-quarter">
+          <a href="some_game.html"><img src="images/boardgame_3.jpg" alt="Image by Mark from Pixabay "
+              style="width:100%"></a>
+          <h3>Play game three</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed,
+            varius arcu.</p>
+        </div>
+        <div class="w3-quarter">
+          <a href="some_game.html"><img src="images/boardgame_4.jpg" alt="Image by Edwin Francisco from Pixabay "
+              style="width:100%"></a>
+          <h3>Play game four</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ipsum sagittis, bibendum neque sed,
+            varius arcu.</p>
+        </div>
+      </div>
+    </div>
 
-<script>
-// Script to open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-}
- 
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
-</script>
+
+    <hr id="about">
+
+    <!-- Footer -->
+    <footer class="w3-row-padding w3-padding-32">
+      <div class="w3-third">
+        <h3>About us</h3>
+        <p>Company description goes here.</p>
+      </div>
+    </footer>
+
+    <!-- End page content -->
+  </div>
+
+  <script>
+
+    function isloggedin() {
+      return window.sessionStorage.getItem("loggedin") === "true"
+    }
+
+    function setVisibility() {
+      if (isloggedin()) {
+        document.getElementById("loggedin_content").style.display = "block";
+        document.getElementById("notloggedin_content").style.display = "none";
+        document.getElementById("logout").style.visibility = "visible";
+      }
+      else {
+        document.getElementById("notloggedin_content").style.display = "block";
+        document.getElementById("loggedin_content").style.display = "none";
+        document.getElementById("logout").style.visibility = "hidden";
+      }
+    }
+    document.addEventListener("DOMContentLoaded", function (event) {
+      setVisibility();
+
+    });
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+    }
+
+    function setloggedin() {
+      window.sessionStorage.setItem("loggedin", "true");
+      setVisibility();
+    }
+
+    function logout() {
+      window.sessionStorage.setItem("loggedin", "false");
+      setVisibility();
+    }
+  </script>
 
 </body>
-</html>
 
+</html>
